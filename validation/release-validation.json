@@ -1,0 +1,330 @@
+{
+  "spec_version": "0.1.0",
+  "generated_at": "2026-11-07T15:13:46.128328+00:00",
+  "evidence_class": "repository/schema/finite semantic validation; not formal proof",
+  "summary": {
+    "passed": 53,
+    "failed": 0,
+    "total": 53
+  },
+  "checks": [
+    {
+      "check_id": "SCHEMA-action-region.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-activation-record.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-authority-provenance.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-compiler-qualification.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-complete-transition-contract.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-conformance-claim.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-evidence-requirement.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-gir.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-governance-requirement.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-governance-source.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-governed-action.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-interoperability-result.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-interpretation-decision.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-lifecycle-attestation.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-package-manifest.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-profile.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-runtime-receipt.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "SCHEMA-validation-attestation.schema",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "valid Draft 2020-12 schema"
+    },
+    {
+      "check_id": "EX-GIR-financial-transaction",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "structural validation passed"
+    },
+    {
+      "check_id": "EX-SEM-financial-transaction",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "finite semantic/reference checks passed"
+    },
+    {
+      "check_id": "EX-GIR-identity-provisioning",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "structural validation passed"
+    },
+    {
+      "check_id": "EX-SEM-identity-provisioning",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "finite semantic/reference checks passed"
+    },
+    {
+      "check_id": "EX-GIR-minimal",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "structural validation passed"
+    },
+    {
+      "check_id": "EX-SEM-minimal",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "finite semantic/reference checks passed"
+    },
+    {
+      "check_id": "EX-GIR-software-deployment",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "structural validation passed"
+    },
+    {
+      "check_id": "EX-SEM-software-deployment",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "finite semantic/reference checks passed"
+    },
+    {
+      "check_id": "EX-MAN-financial-transaction",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "manifest structural validation passed"
+    },
+    {
+      "check_id": "EX-MAN-identity-provisioning",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "manifest structural validation passed"
+    },
+    {
+      "check_id": "EX-MAN-minimal",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "manifest structural validation passed"
+    },
+    {
+      "check_id": "EX-MAN-software-deployment",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "manifest structural validation passed"
+    },
+    {
+      "check_id": "PROFILE-core",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "profile schema validation passed"
+    },
+    {
+      "check_id": "PROFILE-distributed-transition-experimental",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "profile schema validation passed"
+    },
+    {
+      "check_id": "PROFILE-rights-affecting",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "profile schema validation passed"
+    },
+    {
+      "check_id": "PROFILE-security-high-assurance",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "profile schema validation passed"
+    },
+    {
+      "check_id": "REQ-COUNT",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "215 normative requirements (threshold >=100)"
+    },
+    {
+      "check_id": "REQ-UNIQUE",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "215 unique IDs"
+    },
+    {
+      "check_id": "TA-COUNT",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "30 test assertions (threshold >=25)"
+    },
+    {
+      "check_id": "TA-UNIQUE",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "30 unique IDs"
+    },
+    {
+      "check_id": "PROP-COUNT",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "17 formal properties (threshold >=15)"
+    },
+    {
+      "check_id": "PROP-UNIQUE",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "17 unique IDs"
+    },
+    {
+      "check_id": "NEG-authority-expansion",
+      "kind": "negative-fixture",
+      "status": "PASS",
+      "detail": "rejected semantically: Permitted Action Set references undeclared action ACT-UNDECLARED-ROOT"
+    },
+    {
+      "check_id": "NEG-false-closure",
+      "kind": "negative-fixture",
+      "status": "PASS",
+      "detail": "rejected semantically: CTC CTC-CHANGE has success closure that can substitute execution result/tautology for target/closure evidence"
+    },
+    {
+      "check_id": "NEG-malformed-ctc",
+      "kind": "negative-fixture",
+      "status": "PASS",
+      "detail": "rejected structurally: 'target_state' is a required property"
+    },
+    {
+      "check_id": "NEG-missing-region-mapping",
+      "kind": "negative-fixture",
+      "status": "PASS",
+      "detail": "rejected semantically: Active region REG-ALL has no region-contract mapping"
+    },
+    {
+      "check_id": "NEG-silent-weakening",
+      "kind": "negative-fixture",
+      "status": "PASS",
+      "detail": "rejected semantically: Composition policy uses weakening-prone last_write_wins for mandatory component pre_commit_evidence"
+    },
+    {
+      "check_id": "V-COMMIT-STALE-001",
+      "kind": "test-vector",
+      "status": "PASS",
+      "detail": "Proposal-time approval cannot authorize commitment after revocation."
+    },
+    {
+      "check_id": "V-PROJ-AUTH-001",
+      "kind": "test-vector",
+      "status": "PASS",
+      "detail": "Projection expands authority outside canonical action space."
+    },
+    {
+      "check_id": "V-EVID-STALE-001",
+      "kind": "test-vector",
+      "status": "PASS",
+      "detail": "Authentication does not override freshness requirement."
+    },
+    {
+      "check_id": "V-CLOSURE-001",
+      "kind": "test-vector",
+      "status": "PASS",
+      "detail": "Execution success is not evidentiary closure."
+    },
+    {
+      "check_id": "HYGIENE-PROJECT-BLEED",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "no prohibited internal-project bleed terms found"
+    },
+    {
+      "check_id": "HYGIENE-AGCP-BOUNDARY",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "AGCP appears only in explicit independence/security-boundary statements"
+    },
+    {
+      "check_id": "RELEASE-MANIFEST",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "106 immutable release files hashed"
+    },
+    {
+      "check_id": "HYGIENE-NORMATIVE-DRAFT-MARKERS",
+      "kind": "release-check",
+      "status": "PASS",
+      "detail": "no TODO/TBD/FIXME markers in normative specification"
+    }
+  ]
+}

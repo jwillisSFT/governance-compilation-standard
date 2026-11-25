@@ -1,0 +1,497 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/complete-transition-contract.schema.json",
+  "title": "Complete Transition Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "version",
+    "name",
+    "preconditions",
+    "authorization",
+    "pre_commit_evidence",
+    "target_state",
+    "post_commit_evidence",
+    "closure",
+    "source_refs",
+    "status"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "predicate_id",
+          "expression",
+          "language"
+        ],
+        "properties": {
+          "predicate_id": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "gc-expr-0.1",
+              "jsonlogic",
+              "cel",
+              "rego",
+              "cedar",
+              "natural-language-bounded",
+              "other"
+            ]
+          },
+          "expression": {},
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "authorization": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "predicate_id",
+          "expression",
+          "language"
+        ],
+        "properties": {
+          "predicate_id": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "gc-expr-0.1",
+              "jsonlogic",
+              "cel",
+              "rego",
+              "cedar",
+              "natural-language-bounded",
+              "other"
+            ]
+          },
+          "expression": {},
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "pre_commit_evidence": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/evidence-requirement.schema.json",
+        "title": "Evidence Requirement",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_id",
+          "evidence_type",
+          "required"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "evidence_type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "source_qualification": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "subject_binding": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "target_binding": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "freshness_seconds": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "anti_replay": {
+            "type": "boolean",
+            "default": false
+          },
+          "independence_requirement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corroboration": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revocation_check": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "target_state": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "predicate_id",
+          "expression",
+          "language"
+        ],
+        "properties": {
+          "predicate_id": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "gc-expr-0.1",
+              "jsonlogic",
+              "cel",
+              "rego",
+              "cedar",
+              "natural-language-bounded",
+              "other"
+            ]
+          },
+          "expression": {},
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "post_commit_evidence": {
+      "type": "array",
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/evidence-requirement.schema.json",
+        "title": "Evidence Requirement",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_id",
+          "evidence_type",
+          "required"
+        ],
+        "properties": {
+          "evidence_id": {
+            "type": "string"
+          },
+          "evidence_type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "source_qualification": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "subject_binding": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "target_binding": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "freshness_seconds": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "anti_replay": {
+            "type": "boolean",
+            "default": false
+          },
+          "independence_requirement": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "corroboration": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "revocation_check": {
+            "type": "boolean",
+            "default": false
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "closure": {
+      "type": "object",
+      "required": [
+        "outcomes"
+      ],
+      "properties": {
+        "outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "outcome",
+              "conditions",
+              "required_evidence"
+            ],
+            "properties": {
+              "outcome": {
+                "type": "string",
+                "enum": [
+                  "success",
+                  "failed",
+                  "refused",
+                  "cancelled",
+                  "compensated",
+                  "expired",
+                  "other"
+                ]
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "predicate_id",
+                    "expression",
+                    "language"
+                  ],
+                  "properties": {
+                    "predicate_id": {
+                      "type": "string"
+                    },
+                    "language": {
+                      "type": "string",
+                      "enum": [
+                        "gc-expr-0.1",
+                        "jsonlogic",
+                        "cel",
+                        "rego",
+                        "cedar",
+                        "natural-language-bounded",
+                        "other"
+                      ]
+                    },
+                    "expression": {},
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              },
+              "required_evidence": {
+                "type": "array",
+                "items": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/evidence-requirement.schema.json",
+                  "title": "Evidence Requirement",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidence_id",
+                    "evidence_type",
+                    "required"
+                  ],
+                  "properties": {
+                    "evidence_id": {
+                      "type": "string"
+                    },
+                    "evidence_type": {
+                      "type": "string"
+                    },
+                    "required": {
+                      "type": "boolean"
+                    },
+                    "source_qualification": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "subject_binding": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "target_binding": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "freshness_seconds": {
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "minimum": 0
+                    },
+                    "anti_replay": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "independence_requirement": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "corroboration": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "revocation_check": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "notes": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "invariant_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirement_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_judgment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "judgment_id",
+          "authority_ref"
+        ],
+        "properties": {
+          "judgment_id": {
+            "type": "string"
+          },
+          "authority_ref": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "failure_behavior": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "draft",
+        "superseded",
+        "disabled"
+      ]
+    }
+  }
+}

@@ -1,0 +1,35 @@
+name: Research / implementation result
+description: Report an independent implementation, proof, counterexample, empirical result, or replication.
+title: "[research] "
+labels: ["research"]
+body:
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence class
+      options:
+        - Independent implementation
+        - Formalization / proof
+        - Counterexample
+        - Bounded executable analysis
+        - Conformance test
+        - Empirical study
+        - Replication
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Specification version / commit
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope, assumptions, and exclusions
+  - type: textarea
+    id: result
+    attributes:
+      label: Result and reproducibility information
+    validations:
+      required: true

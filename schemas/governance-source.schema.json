@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/governance-source.schema.json",
+  "title": "Governance Source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "title",
+    "source_type",
+    "version",
+    "authority",
+    "status",
+    "applicability"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "law",
+        "regulation",
+        "contract",
+        "standard",
+        "policy",
+        "procedure",
+        "decision",
+        "delegation",
+        "charter",
+        "other"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "authority_id",
+        "basis"
+      ],
+      "properties": {
+        "authority_id": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "instrument_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "effective",
+        "superseded",
+        "withdrawn",
+        "disputed",
+        "unknown"
+      ]
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "effective_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "applicability": {
+      "type": "object",
+      "required": [
+        "scope_statement"
+      ],
+      "properties": {
+        "scope_statement": {
+          "type": "string"
+        },
+        "jurisdictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "organizations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tenants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acquired_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "acquired_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "incorporated_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "explicit_exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

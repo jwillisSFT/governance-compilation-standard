@@ -1,0 +1,34 @@
+name: Specification defect / clarification
+description: Report ambiguity, inconsistency, missing semantics, or a counterexample.
+title: "[spec] "
+labels: ["spec-review"]
+body:
+  - type: dropdown
+    id: class
+    attributes:
+      label: Issue class
+      options:
+        - Ambiguity
+        - Internal inconsistency
+        - Missing requirement
+        - Counterexample
+        - Interoperability problem
+        - Conformance problem
+        - Security/authority problem
+    validations:
+      required: true
+  - type: input
+    id: section
+    attributes:
+      label: Specification section / requirement ID
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: State the problem and why it matters.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / reproduction / counterexample

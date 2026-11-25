@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/activation-record.schema.json",
+  "title": "Activation Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "activation_id",
+    "package_id",
+    "package_version",
+    "scope",
+    "authority_ref",
+    "status",
+    "effective_from",
+    "recorded_at"
+  ],
+  "properties": {
+    "activation_id": {
+      "type": "string"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "authority_ref": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "active",
+        "suspended",
+        "revoked",
+        "superseded",
+        "rolled_back",
+        "expired",
+        "refused"
+      ]
+    },
+    "effective_from": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "effective_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "validation_attestation_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

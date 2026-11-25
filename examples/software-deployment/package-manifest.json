@@ -1,0 +1,73 @@
+{
+  "package_id": "PKG-SOFTWARE_DEPLOYMENT-001",
+  "package_version": "0.1.0",
+  "spec_version": "0.1.0",
+  "model": {
+    "gir_id": "GIR-DEPLOY-001",
+    "gir_version": "0.1.0",
+    "digest": "sha256:example-gir-digest"
+  },
+  "source_baseline": {
+    "baseline_id": "BASE-DEPLOY",
+    "version": "1.0",
+    "digest": null
+  },
+  "compiler": {
+    "compiler_id": "EXAMPLE-COMPILER",
+    "version": "0.1.0",
+    "configuration_id": "example-config",
+    "qualification_ref": null
+  },
+  "target_profile": "gc-profile-core-0.1",
+  "scope": {
+    "scope_id": "SCOPE-DEPLOY",
+    "domains": [
+      "software-deployment"
+    ],
+    "jurisdictions": [],
+    "organizations": [
+      "EXAMPLE-ORG"
+    ],
+    "tenants": [],
+    "actors": [
+      "publisher",
+      "release-approver"
+    ],
+    "actions": [
+      "ACT-PROMOTE"
+    ],
+    "targets": [
+      "PROD-ENV"
+    ],
+    "effective_from": "2026-01-01T00:00:00Z",
+    "effective_until": null,
+    "assumptions": [
+      "Synthetic example authority registry is current."
+    ],
+    "exclusions": [],
+    "limitations": [
+      "Example only."
+    ]
+  },
+  "invariant_profile": "example-invariants",
+  "artifacts": [
+    {
+      "path": "governance.json",
+      "media_type": "application/json",
+      "digest": "sha256:example-artifact-digest"
+    }
+  ],
+  "dependencies": [],
+  "integrity": {
+    "package_digest_algorithm": "sha256",
+    "package_digest": "sha256:example-package-digest",
+    "signature_ref": null
+  },
+  "limitations": [
+    "Synthetic example; digests are placeholders and no cryptographic assurance is claimed."
+  ],
+  "exclusions": [],
+  "unresolved_assumptions": [
+    "Synthetic example authority registry is current."
+  ]
+}

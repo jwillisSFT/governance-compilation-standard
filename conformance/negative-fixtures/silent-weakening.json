@@ -1,0 +1,487 @@
+{
+  "gir_id": "GIR-FIN-001",
+  "gir_version": "0.1.0",
+  "spec_version": "0.1.0",
+  "created_at": "2026-11-07T00:00:00Z",
+  "source_baseline": {
+    "baseline_id": "BASE-FIN",
+    "version": "1.0",
+    "digest": null
+  },
+  "scope": {
+    "scope_id": "SCOPE-FIN",
+    "domains": [
+      "financial-transaction"
+    ],
+    "jurisdictions": [],
+    "organizations": [
+      "EXAMPLE-ORG"
+    ],
+    "tenants": [],
+    "actors": [
+      "requester",
+      "approver"
+    ],
+    "actions": [
+      "ACT-TRANSFER-FUNDS"
+    ],
+    "targets": [
+      "ACCOUNT-TARGET"
+    ],
+    "effective_from": "2026-01-01T00:00:00Z",
+    "effective_until": null,
+    "assumptions": [
+      "Synthetic example authority registry is current."
+    ],
+    "exclusions": [],
+    "limitations": [
+      "Example only."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "SRC-GOV",
+      "title": "Illustrative Funds Transfer Governance",
+      "source_type": "policy",
+      "version": "1.0",
+      "authority": {
+        "authority_id": "AUTH-GOV-OWNER",
+        "basis": "Illustrative authorized governance owner",
+        "instrument_ref": "SRC-GOV"
+      },
+      "status": "effective",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_until": null,
+      "applicability": {
+        "scope_statement": "Illustrative example scope",
+        "jurisdictions": [],
+        "organizations": [
+          "EXAMPLE-ORG"
+        ],
+        "tenants": [],
+        "domains": []
+      },
+      "provenance": {
+        "uri": null,
+        "digest": "sha256:example-source-digest",
+        "acquired_at": "2026-11-07T00:00:00Z",
+        "acquired_by": "EXAMPLE-BUILD"
+      },
+      "incorporated_references": [],
+      "explicit_exclusions": [],
+      "notes": "Synthetic example source; not a real policy."
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "REQ-FIN-001",
+      "statement": "Transfers require current approval, bounded amount, permitted beneficiary, and verified settlement outcome.",
+      "normative_effect": "constraint",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "interpretation_refs": [],
+      "applies_to_actions": [
+        "ACT-TRANSFER-FUNDS"
+      ],
+      "applies_to_targets": [
+        "ACCOUNT-TARGET"
+      ],
+      "status": "active",
+      "assumptions": [],
+      "notes": null
+    }
+  ],
+  "interpretations": [],
+  "authority_provenance": [
+    {
+      "authority_id": "AUTH-TRANSFER",
+      "holder": "Transfer Approval Authority",
+      "authority_type": "organizational",
+      "authorizing_instrument": "SRC-GOV",
+      "delegation_chain": [],
+      "scope": {
+        "statement": "Illustrative authority scope",
+        "actions": [
+          "TRANSFER_FUNDS"
+        ],
+        "targets": [],
+        "domains": []
+      },
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null,
+      "status": "current",
+      "revocation_ref": null,
+      "evidence_refs": []
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-TRANSFER-FUNDS",
+      "name": "TRANSFER_FUNDS",
+      "description": "Transfer a bounded monetary amount to an approved beneficiary.",
+      "parameters": [
+        {
+          "name": "amount",
+          "type": "decimal",
+          "bounded": true,
+          "constraints": {
+            "minimum": 0.01,
+            "maximum": 100000
+          }
+        },
+        {
+          "name": "beneficiary_id",
+          "type": "string",
+          "bounded": true,
+          "constraints": {
+            "registry_bound": true
+          }
+        }
+      ],
+      "targets": [
+        "ACCOUNT-TARGET"
+      ],
+      "permitted_action_status": "in_set",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-FIN-001"
+      ],
+      "notes": null
+    }
+  ],
+  "permitted_action_set": {
+    "set_id": "AP-FIN",
+    "action_refs": [
+      "ACT-TRANSFER-FUNDS"
+    ],
+    "boundary_statement": "Only typed fund transfers to registered beneficiaries within configured amount bounds.",
+    "unknown_action_behavior": "refuse"
+  },
+  "regions": [
+    {
+      "region_id": "REG-FIN-BASE",
+      "version": "1.0",
+      "name": "Base transfer region",
+      "predicate": {
+        "predicate_id": "REG-F-1",
+        "language": "gc-expr-0.1",
+        "expression": "action == ACT-TRANSFER-FUNDS",
+        "description": null
+      },
+      "parent_regions": [],
+      "overlay": false,
+      "treatment_signature": "base-transfer",
+      "contract_refs": [
+        "CTC-FIN-BASE"
+      ],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-FIN-001"
+      ],
+      "precedence": null,
+      "precedence_authority_ref": null,
+      "status": "active"
+    },
+    {
+      "region_id": "REG-FIN-HIGH",
+      "version": "1.0",
+      "name": "High-value overlay",
+      "predicate": {
+        "predicate_id": "REG-F-2",
+        "language": "gc-expr-0.1",
+        "expression": "amount >= 10000",
+        "description": null
+      },
+      "parent_regions": [
+        "REG-FIN-BASE"
+      ],
+      "overlay": true,
+      "treatment_signature": "high-value",
+      "contract_refs": [
+        "CTC-FIN-HIGH"
+      ],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-FIN-001"
+      ],
+      "precedence": null,
+      "precedence_authority_ref": null,
+      "status": "active"
+    }
+  ],
+  "region_contract_mapping": [
+    {
+      "region_ref": "REG-FIN-BASE",
+      "contract_refs": [
+        "CTC-FIN-BASE"
+      ]
+    },
+    {
+      "region_ref": "REG-FIN-HIGH",
+      "contract_refs": [
+        "CTC-FIN-HIGH"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "contract_id": "CTC-FIN-BASE",
+      "version": "1.0",
+      "name": "Base transfer contract",
+      "preconditions": [
+        {
+          "predicate_id": "FIN-PRE-1",
+          "language": "gc-expr-0.1",
+          "expression": "source.balance >= amount",
+          "description": null
+        }
+      ],
+      "authorization": [
+        {
+          "predicate_id": "FIN-AUTH-1",
+          "language": "gc-expr-0.1",
+          "expression": "requester.authorized == true",
+          "description": null
+        },
+        {
+          "predicate_id": "FIN-AUTH-2",
+          "language": "gc-expr-0.1",
+          "expression": "beneficiary.registered == true",
+          "description": null
+        }
+      ],
+      "pre_commit_evidence": [
+        {
+          "evidence_id": "EV-FIN-APP",
+          "evidence_type": "transfer-approval",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": "proposal",
+          "target_binding": null,
+          "freshness_seconds": 1800,
+          "anti_replay": true,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": true,
+          "notes": null
+        }
+      ],
+      "target_state": [
+        {
+          "predicate_id": "FIN-TGT-1",
+          "language": "gc-expr-0.1",
+          "expression": "ledger.transfer_status == settled",
+          "description": null
+        }
+      ],
+      "post_commit_evidence": [
+        {
+          "evidence_id": "EV-FIN-SETTLE",
+          "evidence_type": "settlement-record",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": null,
+          "target_binding": "ledger-transfer",
+          "freshness_seconds": 3600,
+          "anti_replay": false,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": false,
+          "notes": null
+        }
+      ],
+      "closure": {
+        "outcomes": [
+          {
+            "outcome": "success",
+            "conditions": [
+              {
+                "predicate_id": "FIN-CL-1",
+                "language": "gc-expr-0.1",
+                "expression": "settlement_verified == true",
+                "description": null
+              }
+            ],
+            "required_evidence": [
+              {
+                "evidence_id": "EV-FIN-SETTLE",
+                "evidence_type": "settlement-record",
+                "required": true,
+                "source_qualification": null,
+                "subject_binding": null,
+                "target_binding": "ledger-transfer",
+                "freshness_seconds": null,
+                "anti_replay": false,
+                "independence_requirement": null,
+                "corroboration": null,
+                "revocation_check": false,
+                "notes": null
+              }
+            ]
+          }
+        ]
+      },
+      "invariant_refs": [
+        "SI-FIN-1"
+      ],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-FIN-001"
+      ],
+      "human_judgment": [],
+      "status": "active"
+    },
+    {
+      "contract_id": "CTC-FIN-HIGH",
+      "version": "1.0",
+      "name": "High-value additional controls",
+      "preconditions": [],
+      "authorization": [
+        {
+          "predicate_id": "FIN-AUTH-H1",
+          "language": "gc-expr-0.1",
+          "expression": "independent_approver.current == true",
+          "description": null
+        }
+      ],
+      "pre_commit_evidence": [
+        {
+          "evidence_id": "EV-FIN-2APP",
+          "evidence_type": "independent-second-approval",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": "proposal",
+          "target_binding": null,
+          "freshness_seconds": 900,
+          "anti_replay": true,
+          "independence_requirement": "approver != requester",
+          "corroboration": null,
+          "revocation_check": false,
+          "notes": null
+        }
+      ],
+      "target_state": [
+        {
+          "predicate_id": "FIN-TGT-H1",
+          "language": "gc-expr-0.1",
+          "expression": "true",
+          "description": "No additional target-state condition beyond composed base contract."
+        }
+      ],
+      "post_commit_evidence": [],
+      "closure": {
+        "outcomes": [
+          {
+            "outcome": "success",
+            "conditions": [
+              {
+                "predicate_id": "FIN-CL-H1",
+                "language": "gc-expr-0.1",
+                "expression": "true",
+                "description": "No additional closure condition beyond composed base contract."
+              }
+            ],
+            "required_evidence": []
+          }
+        ]
+      },
+      "invariant_refs": [],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-FIN-001"
+      ],
+      "human_judgment": [],
+      "status": "active"
+    }
+  ],
+  "constitutional_invariants": [],
+  "system_invariants": [
+    {
+      "invariant_id": "SI-FIN-1",
+      "statement": "Ledger conservation constraint must hold for the governed transfer.",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "predicate": {
+        "predicate_id": "FIN-SI-1",
+        "language": "gc-expr-0.1",
+        "expression": "debit == credit",
+        "description": null
+      }
+    }
+  ],
+  "composition_policy": {
+    "policy_id": "COMP-MINIMAL",
+    "component_rules": {
+      "authorization": "conjunction",
+      "pre_commit_evidence": "last_write_wins",
+      "target_state": "conjunction",
+      "post_commit_evidence": "union_required",
+      "closure": "conjunction"
+    },
+    "authorized_overrides": [],
+    "conflict_behavior": "refuse"
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "EV-FIN-APP",
+      "evidence_type": "transfer-approval",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    },
+    {
+      "evidence_id": "EV-FIN-2APP",
+      "evidence_type": "independent-second-approval",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    },
+    {
+      "evidence_id": "EV-FIN-SETTLE",
+      "evidence_type": "settlement-record",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    }
+  ],
+  "profiles": [
+    "gc-profile-core-0.1"
+  ],
+  "extensions": {},
+  "limitations": [
+    "Synthetic example only; not a production policy."
+  ]
+}

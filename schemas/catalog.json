@@ -1,0 +1,78 @@
+{
+  "spec_version": "0.1.0",
+  "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+  "schemas": [
+    {
+      "name": "action-region.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/action-region.schema.json"
+    },
+    {
+      "name": "activation-record.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/activation-record.schema.json"
+    },
+    {
+      "name": "authority-provenance.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/authority-provenance.schema.json"
+    },
+    {
+      "name": "compiler-qualification.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/compiler-qualification.schema.json"
+    },
+    {
+      "name": "complete-transition-contract.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/complete-transition-contract.schema.json"
+    },
+    {
+      "name": "conformance-claim.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/conformance-claim.schema.json"
+    },
+    {
+      "name": "evidence-requirement.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/evidence-requirement.schema.json"
+    },
+    {
+      "name": "gir.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/gir.schema.json"
+    },
+    {
+      "name": "governance-requirement.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/governance-requirement.schema.json"
+    },
+    {
+      "name": "governance-source.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/governance-source.schema.json"
+    },
+    {
+      "name": "governed-action.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/governed-action.schema.json"
+    },
+    {
+      "name": "interoperability-result.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/interoperability-result.schema.json"
+    },
+    {
+      "name": "interpretation-decision.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/interpretation-decision.schema.json"
+    },
+    {
+      "name": "lifecycle-attestation.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/lifecycle-attestation.schema.json"
+    },
+    {
+      "name": "package-manifest.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/package-manifest.schema.json"
+    },
+    {
+      "name": "profile.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/profile.schema.json"
+    },
+    {
+      "name": "runtime-receipt.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/runtime-receipt.schema.json"
+    },
+    {
+      "name": "validation-attestation.schema.json",
+      "id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/validation-attestation.schema.json"
+    }
+  ]
+}

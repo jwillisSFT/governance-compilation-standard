@@ -1,0 +1,215 @@
+{
+  "spec_version": "0.1.0",
+  "assertions": [
+    {
+      "assertion_id": "GC-TA-001",
+      "area": "Schema",
+      "assertion": "Each published JSON Schema is a valid Draft 2020-12 schema.",
+      "target": "all schemas",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-002",
+      "area": "GIR",
+      "assertion": "Each positive GIR example validates structurally against gir.schema.json.",
+      "target": "positive examples",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-003",
+      "area": "Package",
+      "assertion": "Each positive package manifest validates structurally against package-manifest.schema.json.",
+      "target": "positive examples",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-004",
+      "area": "Authority",
+      "assertion": "Every permitted action reference resolves to a declared action marked in_set or conditional.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-005",
+      "area": "Regions",
+      "assertion": "Every active region contract reference resolves to a declared active CTC.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-006",
+      "area": "Mapping",
+      "assertion": "Every active region has a region-contract mapping entry.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-007",
+      "area": "CTC",
+      "assertion": "Each active CTC includes all six core semantic components.",
+      "target": "positive GIR",
+      "method": "schema + semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-008",
+      "area": "Traceability",
+      "assertion": "Each governance requirement references at least one declared source.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-009",
+      "area": "Traceability",
+      "assertion": "Each active CTC references at least one declared source.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-010",
+      "area": "Evidence",
+      "assertion": "Required evidence IDs are unique within a CTC component/catalog context.",
+      "target": "positive GIR",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-011",
+      "area": "No silent weakening",
+      "assertion": "A high-value overlay adding a required approval remains additive under union/conjunction composition.",
+      "target": "financial example",
+      "method": "bounded semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-012",
+      "area": "Authority expansion",
+      "assertion": "Fixture with out-of-set action inserted into permitted set is detected.",
+      "target": "negative fixture",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-013",
+      "area": "Region coverage",
+      "assertion": "Fixture removing a required region mapping is detected.",
+      "target": "negative fixture",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-014",
+      "area": "CTC",
+      "assertion": "Fixture missing a required CTC component is rejected structurally.",
+      "target": "negative fixture",
+      "method": "schema validation"
+    },
+    {
+      "assertion_id": "GC-TA-015",
+      "area": "Silent weakening",
+      "assertion": "Fixture that replaces union_required evidence composition with last_write_wins is detected.",
+      "target": "negative fixture",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-016",
+      "area": "Commit freshness",
+      "assertion": "Stale authorization fixture demonstrates that proposal-time approval cannot substitute for current approval.",
+      "target": "negative vector",
+      "method": "bounded semantic rule"
+    },
+    {
+      "assertion_id": "GC-TA-017",
+      "area": "Closure",
+      "assertion": "False-closure fixture is detected when success closure lacks required target evidence.",
+      "target": "negative fixture",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-018",
+      "area": "Projection",
+      "assertion": "Unsound target projection granting undeclared action is classified as authority expansion.",
+      "target": "negative vector",
+      "method": "bounded semantic rule"
+    },
+    {
+      "assertion_id": "GC-TA-019",
+      "area": "Profile",
+      "assertion": "Core profile validates against profile.schema.json.",
+      "target": "profile",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-020",
+      "area": "Conformance claim",
+      "assertion": "A conformance claim must include object, version, profiles, scope, evidence basis, limitations/exclusions, and invalidation conditions.",
+      "target": "claim schema",
+      "method": "schema"
+    },
+    {
+      "assertion_id": "GC-TA-021",
+      "area": "Claim discipline",
+      "assertion": "Package conformance is not accepted as evidence of deployment non-bypassability without deployment evidence references.",
+      "target": "claim",
+      "method": "automated semantic check"
+    },
+    {
+      "assertion_id": "GC-TA-022",
+      "area": "Unknown extension",
+      "assertion": "Unknown mandatory authority/evidence/closure extension causes incompatibility rather than ignore.",
+      "target": "runtime consumer",
+      "method": "implementation test"
+    },
+    {
+      "assertion_id": "GC-TA-023",
+      "area": "Lifecycle",
+      "assertion": "Activation of revoked/suspended package is refused.",
+      "target": "runtime lifecycle",
+      "method": "implementation test"
+    },
+    {
+      "assertion_id": "GC-TA-024",
+      "area": "Evidence",
+      "assertion": "Authenticated-but-stale evidence does not satisfy a freshness-sensitive requirement.",
+      "target": "runtime evidence",
+      "method": "implementation test"
+    },
+    {
+      "assertion_id": "GC-TA-025",
+      "area": "Closure",
+      "assertion": "Successful execution without required post-commit evidence does not produce successful closure.",
+      "target": "runtime closure",
+      "method": "implementation test"
+    },
+    {
+      "assertion_id": "GC-TA-026",
+      "area": "Legal limitation",
+      "assertion": "Conformance output does not claim legal compliance as a derived result.",
+      "target": "claim/documentation",
+      "method": "review"
+    },
+    {
+      "assertion_id": "GC-TA-027",
+      "area": "Repository hygiene",
+      "assertion": "Release contains no project-specific secrets or prohibited internal-development bleed terms.",
+      "target": "repository",
+      "method": "automated scan"
+    },
+    {
+      "assertion_id": "GC-TA-028",
+      "area": "Identifiers",
+      "assertion": "Normative requirement identifiers are unique.",
+      "target": "requirements catalog",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-029",
+      "area": "Formal",
+      "assertion": "Formal property identifiers are unique.",
+      "target": "property catalog",
+      "method": "automated"
+    },
+    {
+      "assertion_id": "GC-TA-030",
+      "area": "Manifest",
+      "assertion": "Release manifest hashes all immutable release files except the manifest itself and the generated release-validation report.",
+      "target": "release",
+      "method": "automated"
+    }
+  ]
+}

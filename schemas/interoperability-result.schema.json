@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/interoperability-result.schema.json",
+  "title": "Interoperability Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "result_id",
+    "producer",
+    "consumer",
+    "spec_version",
+    "profiles",
+    "package_id",
+    "operations",
+    "status",
+    "limitations"
+  ],
+  "properties": {
+    "result_id": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "object"
+    },
+    "consumer": {
+      "type": "object"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "transport_mapping": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "operation",
+          "status"
+        ],
+        "properties": {
+          "operation": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pass",
+              "fail",
+              "not_tested",
+              "indeterminate"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "pass_with_conditions",
+        "fail",
+        "indeterminate"
+      ]
+    },
+    "deviations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

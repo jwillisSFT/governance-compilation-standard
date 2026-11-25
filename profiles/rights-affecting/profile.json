@@ -1,0 +1,39 @@
+{
+  "profile_id": "gc-profile-rights-affecting-0.1",
+  "version": "0.1.0",
+  "status": "draft",
+  "spec_versions": [
+    "0.1.0"
+  ],
+  "scope": "Governed transitions materially affecting rights, entitlements, eligibility, employment, credit, licensing, disciplinary status, or essential/public services where governing authority requires contestability or redress.",
+  "required_capabilities": [
+    "gc-profile-core-0.1",
+    "contestability",
+    "challenge-provenance",
+    "correction-propagation"
+  ],
+  "added_requirements": [
+    "Challenge scope and standing must be represented where required.",
+    "Review authority must be identifiable.",
+    "Successful challenge propagation to affected models/packages/decisions must be traceable.",
+    "Post-consequence remediation semantics must be represented where applicable."
+  ],
+  "mandatory_extensions": [
+    "gc:contestability"
+  ],
+  "assurance_requirements": [
+    "Test challenge initiation, review, correction propagation, and non-erasure of original decision provenance."
+  ],
+  "runtime_dependencies": [
+    "Runtime/operating profile must define whether a challenge can stay or suspend commitment."
+  ],
+  "compatibility_rules": [
+    "Profile does not create substantive appeal rights not present in source governance."
+  ],
+  "invalidation_conditions": [
+    "Change in governing review/redress procedure."
+  ],
+  "limitations": [
+    "Draft profile requires domain-specific legal/institutional review."
+  ]
+}

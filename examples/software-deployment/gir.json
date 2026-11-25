@@ -1,0 +1,456 @@
+{
+  "gir_id": "GIR-DEPLOY-001",
+  "gir_version": "0.1.0",
+  "spec_version": "0.1.0",
+  "created_at": "2026-11-07T00:00:00Z",
+  "source_baseline": {
+    "baseline_id": "BASE-DEPLOY",
+    "version": "1.0",
+    "digest": null
+  },
+  "scope": {
+    "scope_id": "SCOPE-DEPLOY",
+    "domains": [
+      "software-deployment"
+    ],
+    "jurisdictions": [],
+    "organizations": [
+      "EXAMPLE-ORG"
+    ],
+    "tenants": [],
+    "actors": [
+      "publisher",
+      "release-approver"
+    ],
+    "actions": [
+      "ACT-PROMOTE"
+    ],
+    "targets": [
+      "PROD-ENV"
+    ],
+    "effective_from": "2026-01-01T00:00:00Z",
+    "effective_until": null,
+    "assumptions": [
+      "Synthetic example authority registry is current."
+    ],
+    "exclusions": [],
+    "limitations": [
+      "Example only."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "SRC-GOV",
+      "title": "Illustrative Production Promotion Policy",
+      "source_type": "policy",
+      "version": "1.0",
+      "authority": {
+        "authority_id": "AUTH-GOV-OWNER",
+        "basis": "Illustrative authorized governance owner",
+        "instrument_ref": "SRC-GOV"
+      },
+      "status": "effective",
+      "effective_from": "2026-01-01T00:00:00Z",
+      "effective_until": null,
+      "applicability": {
+        "scope_statement": "Illustrative example scope",
+        "jurisdictions": [],
+        "organizations": [
+          "EXAMPLE-ORG"
+        ],
+        "tenants": [],
+        "domains": []
+      },
+      "provenance": {
+        "uri": null,
+        "digest": "sha256:example-source-digest",
+        "acquired_at": "2026-11-07T00:00:00Z",
+        "acquired_by": "EXAMPLE-BUILD"
+      },
+      "incorporated_references": [],
+      "explicit_exclusions": [],
+      "notes": "Synthetic example source; not a real policy."
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "REQ-DEP-001",
+      "statement": "Production promotion requires verified publisher identity, accepted SBOM/security evidence, current release approval, approved target, and post-deployment verification.",
+      "normative_effect": "constraint",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "interpretation_refs": [],
+      "applies_to_actions": [
+        "ACT-PROMOTE"
+      ],
+      "applies_to_targets": [
+        "PROD-ENV"
+      ],
+      "status": "active",
+      "assumptions": [],
+      "notes": null
+    }
+  ],
+  "interpretations": [],
+  "authority_provenance": [
+    {
+      "authority_id": "AUTH-RELEASE",
+      "holder": "Release Approval Authority",
+      "authority_type": "organizational",
+      "authorizing_instrument": "SRC-GOV",
+      "delegation_chain": [],
+      "scope": {
+        "statement": "Illustrative authority scope",
+        "actions": [
+          "PROMOTE_ARTIFACT"
+        ],
+        "targets": [],
+        "domains": []
+      },
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": null,
+      "status": "current",
+      "revocation_ref": null,
+      "evidence_refs": []
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "ACT-PROMOTE",
+      "name": "PROMOTE_ARTIFACT",
+      "description": "Promote an identified build artifact to an approved production environment.",
+      "parameters": [
+        {
+          "name": "artifact_digest",
+          "type": "sha256",
+          "bounded": true,
+          "constraints": {
+            "digest_bound": true
+          }
+        },
+        {
+          "name": "release_id",
+          "type": "string",
+          "bounded": true,
+          "constraints": {
+            "release_registry_bound": true
+          }
+        }
+      ],
+      "targets": [
+        "PROD-ENV"
+      ],
+      "permitted_action_status": "in_set",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-DEP-001"
+      ],
+      "notes": null
+    }
+  ],
+  "permitted_action_set": {
+    "set_id": "AP-DEPLOY",
+    "action_refs": [
+      "ACT-PROMOTE"
+    ],
+    "boundary_statement": "Only digest-bound promotion of registered release artifacts to approved production targets.",
+    "unknown_action_behavior": "refuse"
+  },
+  "regions": [
+    {
+      "region_id": "REG-DEPLOY-PROD",
+      "version": "1.0",
+      "name": "Production deployment",
+      "predicate": {
+        "predicate_id": "DEP-REG-1",
+        "language": "gc-expr-0.1",
+        "expression": "target == PROD-ENV",
+        "description": null
+      },
+      "parent_regions": [],
+      "overlay": false,
+      "treatment_signature": "production-release",
+      "contract_refs": [
+        "CTC-DEPLOY"
+      ],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-DEP-001"
+      ],
+      "precedence": null,
+      "precedence_authority_ref": null,
+      "status": "active"
+    }
+  ],
+  "region_contract_mapping": [
+    {
+      "region_ref": "REG-DEPLOY-PROD",
+      "contract_refs": [
+        "CTC-DEPLOY"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "contract_id": "CTC-DEPLOY",
+      "version": "1.0",
+      "name": "Production promotion contract",
+      "preconditions": [
+        {
+          "predicate_id": "DEP-PRE-1",
+          "language": "gc-expr-0.1",
+          "expression": "change_window.open == true",
+          "description": null
+        }
+      ],
+      "authorization": [
+        {
+          "predicate_id": "DEP-AUTH-1",
+          "language": "gc-expr-0.1",
+          "expression": "publisher.verified == true",
+          "description": null
+        },
+        {
+          "predicate_id": "DEP-AUTH-2",
+          "language": "gc-expr-0.1",
+          "expression": "release_approval.current == true",
+          "description": null
+        },
+        {
+          "predicate_id": "DEP-AUTH-3",
+          "language": "gc-expr-0.1",
+          "expression": "target.approved == true",
+          "description": null
+        }
+      ],
+      "pre_commit_evidence": [
+        {
+          "evidence_id": "EV-DEP-SBOM",
+          "evidence_type": "sbom-attestation",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": "artifact_digest",
+          "target_binding": null,
+          "freshness_seconds": 604800,
+          "anti_replay": false,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": false,
+          "notes": null
+        },
+        {
+          "evidence_id": "EV-DEP-APP",
+          "evidence_type": "release-approval",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": "artifact_digest",
+          "target_binding": null,
+          "freshness_seconds": 86400,
+          "anti_replay": true,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": true,
+          "notes": null
+        }
+      ],
+      "target_state": [
+        {
+          "predicate_id": "DEP-TGT-1",
+          "language": "gc-expr-0.1",
+          "expression": "deployment.active_digest == artifact_digest",
+          "description": null
+        },
+        {
+          "predicate_id": "DEP-TGT-2",
+          "language": "gc-expr-0.1",
+          "expression": "health.required_checks == passing",
+          "description": null
+        }
+      ],
+      "post_commit_evidence": [
+        {
+          "evidence_id": "EV-DEP-READ",
+          "evidence_type": "deployment-readback",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": null,
+          "target_binding": "PROD-ENV",
+          "freshness_seconds": 600,
+          "anti_replay": false,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": false,
+          "notes": null
+        },
+        {
+          "evidence_id": "EV-DEP-HEALTH",
+          "evidence_type": "health-check-record",
+          "required": true,
+          "source_qualification": null,
+          "subject_binding": null,
+          "target_binding": "PROD-ENV",
+          "freshness_seconds": 600,
+          "anti_replay": false,
+          "independence_requirement": null,
+          "corroboration": null,
+          "revocation_check": false,
+          "notes": null
+        }
+      ],
+      "closure": {
+        "outcomes": [
+          {
+            "outcome": "success",
+            "conditions": [
+              {
+                "predicate_id": "DEP-CL-1",
+                "language": "gc-expr-0.1",
+                "expression": "target_verified == true",
+                "description": null
+              }
+            ],
+            "required_evidence": [
+              {
+                "evidence_id": "EV-DEP-READ",
+                "evidence_type": "deployment-readback",
+                "required": true,
+                "source_qualification": null,
+                "subject_binding": null,
+                "target_binding": "PROD-ENV",
+                "freshness_seconds": null,
+                "anti_replay": false,
+                "independence_requirement": null,
+                "corroboration": null,
+                "revocation_check": false,
+                "notes": null
+              },
+              {
+                "evidence_id": "EV-DEP-HEALTH",
+                "evidence_type": "health-check-record",
+                "required": true,
+                "source_qualification": null,
+                "subject_binding": null,
+                "target_binding": "PROD-ENV",
+                "freshness_seconds": null,
+                "anti_replay": false,
+                "independence_requirement": null,
+                "corroboration": null,
+                "revocation_check": false,
+                "notes": null
+              }
+            ]
+          }
+        ]
+      },
+      "invariant_refs": [
+        "SI-DEP-1"
+      ],
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "requirement_refs": [
+        "REQ-DEP-001"
+      ],
+      "human_judgment": [],
+      "status": "active"
+    }
+  ],
+  "constitutional_invariants": [],
+  "system_invariants": [
+    {
+      "invariant_id": "SI-DEP-1",
+      "statement": "Only the approved artifact digest may become active in the target release slot.",
+      "source_refs": [
+        "SRC-GOV"
+      ],
+      "predicate": {
+        "predicate_id": "DEP-SI-1",
+        "language": "gc-expr-0.1",
+        "expression": "deployment.active_digest == proposal.artifact_digest",
+        "description": null
+      }
+    }
+  ],
+  "composition_policy": {
+    "policy_id": "COMP-MINIMAL",
+    "component_rules": {
+      "authorization": "conjunction",
+      "pre_commit_evidence": "union_required",
+      "target_state": "conjunction",
+      "post_commit_evidence": "union_required",
+      "closure": "conjunction"
+    },
+    "authorized_overrides": [],
+    "conflict_behavior": "refuse"
+  },
+  "evidence_catalog": [
+    {
+      "evidence_id": "EV-DEP-SBOM",
+      "evidence_type": "sbom-attestation",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    },
+    {
+      "evidence_id": "EV-DEP-APP",
+      "evidence_type": "release-approval",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    },
+    {
+      "evidence_id": "EV-DEP-READ",
+      "evidence_type": "deployment-readback",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    },
+    {
+      "evidence_id": "EV-DEP-HEALTH",
+      "evidence_type": "health-check-record",
+      "required": true,
+      "source_qualification": null,
+      "subject_binding": null,
+      "target_binding": null,
+      "freshness_seconds": null,
+      "anti_replay": false,
+      "independence_requirement": null,
+      "corroboration": null,
+      "revocation_check": false,
+      "notes": null
+    }
+  ],
+  "profiles": [
+    "gc-profile-core-0.1"
+  ],
+  "extensions": {},
+  "limitations": [
+    "Synthetic example only; not a production policy."
+  ]
+}

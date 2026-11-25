@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/authority-provenance.schema.json",
+  "title": "Authority Provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "authority_id",
+    "holder",
+    "authority_type",
+    "authorizing_instrument",
+    "scope",
+    "status"
+  ],
+  "properties": {
+    "authority_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "holder": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_type": {
+      "type": "string",
+      "enum": [
+        "role",
+        "office",
+        "delegation",
+        "statutory",
+        "contractual",
+        "organizational",
+        "system",
+        "other"
+      ]
+    },
+    "authorizing_instrument": {
+      "type": "string",
+      "minLength": 1
+    },
+    "delegation_chain": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "statement"
+      ],
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "valid_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "current",
+        "expired",
+        "revoked",
+        "superseded",
+        "disputed",
+        "unknown"
+      ]
+    },
+    "revocation_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

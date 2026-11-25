@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/evidence-requirement.schema.json",
+  "title": "Evidence Requirement",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "evidence_id",
+    "evidence_type",
+    "required"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "source_qualification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subject_binding": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_binding": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "freshness_seconds": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "anti_replay": {
+      "type": "boolean",
+      "default": false
+    },
+    "independence_requirement": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "corroboration": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revocation_check": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

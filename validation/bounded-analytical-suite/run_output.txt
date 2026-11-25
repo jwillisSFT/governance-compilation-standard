@@ -1,0 +1,172 @@
+{
+  "suite": "Governance Compilation Bounded Analytical Validation Suite",
+  "status": "analytical validation only - not formal proof",
+  "finite_domain": {
+    "actions": 6,
+    "contexts": 3,
+    "baseline_regions": 5,
+    "baseline_contracts": 5
+  },
+  "baseline_checks": [
+    {
+      "property": "AuthoritySpaceClosure",
+      "passed": true,
+      "detail": "No enumerated authorized action falls outside A_P",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "RegionCoverage",
+      "passed": true,
+      "detail": "Every enumerated permitted action has base-region coverage",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "RegionToContractMapping",
+      "passed": true,
+      "detail": "Every declared region maps to a contract",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "ContractWellFormed",
+      "passed": true,
+      "detail": "All contracts contain the required structural fields",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "ContractSatisfiable",
+      "passed": true,
+      "detail": "Each mapped region has at least one enumerated authorization witness",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "NoSilentWeakening",
+      "passed": true,
+      "detail": "Union composition preserves all enumerated mandatory obligations",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "InvariantPreservation",
+      "passed": true,
+      "detail": "All enumerated authorized transfers preserve the nonnegative-balance invariant",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "AuthorizationSatisfiable",
+      "passed": true,
+      "detail": "Each enumerated base-region class has at least one authorizable witness",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "TargetReachable",
+      "passed": true,
+      "detail": "Finite transition function reaches target predicates for each enumerated permitted action",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "EvidenceSourceCapability",
+      "passed": true,
+      "detail": "All enumerated required evidence types have declared source capability",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "SuccessfulClosureReachable",
+      "passed": true,
+      "detail": "Each enumerated base-region class has a successful-closure witness",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "NoUnauthorizedClosure",
+      "passed": true,
+      "detail": "No enumerated successful closure occurs without authorization",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "Nonvacuity",
+      "passed": true,
+      "detail": "Successful closure is reachable in the finite model",
+      "witness_or_counterexample": [
+        "T1",
+        "T2",
+        "T3",
+        "P1"
+      ]
+    },
+    {
+      "property": "ProjectionSoundness",
+      "passed": true,
+      "detail": "Projected action types are a subset of canonical permitted types",
+      "witness_or_counterexample": null
+    },
+    {
+      "property": "ClosureProjectionSoundness",
+      "passed": true,
+      "detail": "Projection retains canonical target/evidence prerequisites for successful closure",
+      "witness_or_counterexample": null
+    }
+  ],
+  "baseline_pass": true,
+  "injected_defects": {
+    "authority_expansion": {
+      "property": "AuthorityBoundaryRegression",
+      "passed": false,
+      "detail": "Compiled permitted types must not exceed externally approved boundary",
+      "witness_or_counterexample": [
+        "DELETE_SYSTEM"
+      ]
+    },
+    "missing_region": {
+      "property": "RegionCoverage",
+      "passed": false,
+      "detail": "Permitted action lacks a base region",
+      "witness_or_counterexample": {
+        "id": "T3",
+        "type": "TRANSFER_FUNDS",
+        "amount": 5000,
+        "risk": "high",
+        "target": "approved"
+      }
+    },
+    "contradictory_contract": {
+      "property": "ContractSatisfiable",
+      "passed": false,
+      "detail": "Injected impossible authorization atom detected",
+      "witness_or_counterexample": "never_true"
+    },
+    "silent_weakening": {
+      "property": "NoSilentWeakening",
+      "passed": false,
+      "detail": "Injected effective-contract weakening detected",
+      "witness_or_counterexample": {
+        "action": "T3",
+        "field": "auth",
+        "drop": "policy_current"
+      }
+    },
+    "stale_authorization": {
+      "property": "CommitTimeRevalidation",
+      "passed": false,
+      "detail": "Stale policy version must not authorize high-risk transition",
+      "witness_or_counterexample": {
+        "bug_allows": true
+      }
+    },
+    "false_closure": {
+      "property": "ClosureProjectionSoundness",
+      "passed": false,
+      "detail": "Projection permits closure without canonical closure prerequisites",
+      "witness_or_counterexample": [
+        "post_evidence_satisfied"
+      ]
+    },
+    "unsound_projection": {
+      "property": "ProjectionSoundness",
+      "passed": false,
+      "detail": "Projection grants action type outside canonical A_P",
+      "witness_or_counterexample": [
+        "DELETE_SYSTEM"
+      ]
+    }
+  },
+  "defects_detected": true,
+  "interpretation": "Passing results apply only to the enumerated finite fixture model and encoded checks. They do not establish general soundness, completeness, implementation conformance, or empirical effectiveness."
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/action-region.schema.json",
+  "title": "Governance-Defined Action Region",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "region_id",
+    "version",
+    "name",
+    "predicate",
+    "contract_refs",
+    "status"
+  ],
+  "properties": {
+    "region_id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "predicate": {
+      "type": "object",
+      "required": [
+        "predicate_id",
+        "expression",
+        "language"
+      ],
+      "properties": {
+        "predicate_id": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "gc-expr-0.1",
+            "jsonlogic",
+            "cel",
+            "rego",
+            "cedar",
+            "natural-language-bounded",
+            "other"
+          ]
+        },
+        "expression": {},
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "parent_regions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overlay": {
+      "type": "boolean",
+      "default": false
+    },
+    "treatment_signature": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contract_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirement_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "precedence": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "precedence_authority_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "draft",
+        "superseded",
+        "disabled"
+      ]
+    }
+  }
+}

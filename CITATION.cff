@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use the Governance Compilation Open Specification, please cite this repository release and the associated research monograph."
+title: "Governance Compilation Open Specification"
+type: software
+authors:
+  - family-names: Willis
+    given-names: John M.
+version: 0.1.0
+date-released: 2026-11-07
+url: "https://github.com/jwillisSFT/governance-compilation-standard"
+license: CC-BY-4.0
+preferred-citation:
+  type: book
+  title: "Governance Compilation: A Reference Model for Translating Human Governance into Machine-Evaluable Controls"
+  authors:
+    - family-names: Willis
+      given-names: John M.
+  year: 2026
+  isbn: "979-8-9971149-3-0"
+  publisher:
+    name: "Sustainable Future Tech Publishing"

@@ -1,0 +1,41 @@
+{
+  "profile_id": "gc-profile-distributed-transition-0.1",
+  "version": "0.1.0",
+  "status": "experimental",
+  "spec_versions": [
+    "0.1.0"
+  ],
+  "scope": "Experimental governance of multi-step/distributed transitions with partial commit, compensation, irreversible effects, or saga-like coordination.",
+  "required_capabilities": [
+    "gc-profile-core-0.1",
+    "subtransition-contracts",
+    "composite-evidence",
+    "recovery-authority",
+    "composite-closure"
+  ],
+  "added_requirements": [
+    "Atomicity boundary must be declared.",
+    "Subtransition commitment and failure semantics must be explicit.",
+    "Compensation and recovery authority must be explicit.",
+    "Irreversible effects must be identified.",
+    "Composite closure must not conceal unresolved partial effects."
+  ],
+  "mandatory_extensions": [
+    "gc:distributed-transition"
+  ],
+  "assurance_requirements": [
+    "Model-check or otherwise analyze partial-commit/recovery state space for the declared profile."
+  ],
+  "runtime_dependencies": [
+    "Coordinator/participants must expose enough state/evidence to establish the modeled composite disposition."
+  ],
+  "compatibility_rules": [
+    "Core single-transition semantics are not sufficient to claim arbitrary distributed correctness."
+  ],
+  "invalidation_conditions": [
+    "Change in participant set, transaction boundary, compensation semantics, or recovery authority."
+  ],
+  "limitations": [
+    "Experimental; not a stable conformance profile."
+  ]
+}

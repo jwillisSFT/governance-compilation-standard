@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/lifecycle-attestation.schema.json",
+  "title": "Package Lifecycle Attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attestation_id",
+    "package_id",
+    "package_version",
+    "event",
+    "authority_ref",
+    "timestamp",
+    "status"
+  ],
+  "properties": {
+    "attestation_id": {
+      "type": "string"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "validated",
+        "approved",
+        "issued",
+        "activated",
+        "suspended",
+        "revoked",
+        "superseded",
+        "rolled_back",
+        "expired"
+      ]
+    },
+    "authority_ref": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "supersedes_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "profile_id": "gc-profile-security-high-assurance-0.1",
+  "version": "0.1.0",
+  "status": "draft",
+  "spec_versions": [
+    "0.1.0"
+  ],
+  "scope": "High-consequence use relying on authenticated packages, attestations, and stronger deployment assurance.",
+  "required_capabilities": [
+    "gc-profile-core-0.1",
+    "signed-artifacts",
+    "trust-anchor-profile",
+    "evidence-source-qualification",
+    "deployment-route-analysis"
+  ],
+  "added_requirements": [
+    "Signing authority and key custody must be declared.",
+    "Trust anchors and verification policy must be declared.",
+    "Rotation, expiry, compromise response, and revocation must be defined.",
+    "Non-bypassability claims require deployment evidence."
+  ],
+  "mandatory_extensions": [
+    "gc:security-trust"
+  ],
+  "assurance_requirements": [
+    "Independent or otherwise declared high-assurance review appropriate to consequence class."
+  ],
+  "runtime_dependencies": [
+    "Runtime verifies package/attestation integrity and revocation status."
+  ],
+  "compatibility_rules": [
+    "Cryptographic authenticity does not imply evidence truth."
+  ],
+  "invalidation_conditions": [
+    "Trust-anchor, key, topology, identity, privilege, enforcement, or dependency changes that affect the assessed claim."
+  ],
+  "limitations": [
+    "Cryptographic suite intentionally unspecified in v0.1.0."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/validation-attestation.schema.json",
+  "title": "Validation Attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "attestation_id",
+    "object_type",
+    "object_id",
+    "spec_version",
+    "profile",
+    "methods",
+    "results",
+    "status",
+    "assessor",
+    "timestamp",
+    "limitations"
+  ],
+  "properties": {
+    "attestation_id": {
+      "type": "string"
+    },
+    "object_type": {
+      "type": "string"
+    },
+    "object_id": {
+      "type": "string"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "claim",
+          "status"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "satisfied",
+              "unsatisfied",
+              "indeterminate",
+              "not_applicable"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "pass_with_conditions",
+        "fail",
+        "indeterminate"
+      ]
+    },
+    "assessor": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

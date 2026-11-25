@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/runtime-receipt.schema.json",
+  "title": "Runtime Governance Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "proposal_id",
+    "action_id",
+    "target_id",
+    "package_id",
+    "package_version",
+    "decision",
+    "decision_time"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string"
+    },
+    "proposal_id": {
+      "type": "string"
+    },
+    "action_id": {
+      "type": "string"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "governance_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "permit",
+        "refuse",
+        "escalate",
+        "hold",
+        "indeterminate"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "obligations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "canonical_state_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decision_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "commit_time": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "commit_revalidated": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enforcement_result": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_verification_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "closure_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "profile_id": "gc-profile-core-0.1",
+  "version": "0.1.0",
+  "status": "normative",
+  "spec_versions": [
+    "0.1.0"
+  ],
+  "scope": "Minimum Governance Compilation Core semantics and lifecycle obligations.",
+  "required_capabilities": [
+    "source-baseline",
+    "declared-scope",
+    "traceability",
+    "gir-core",
+    "authority-boundary",
+    "package-lifecycle",
+    "conformance-claim"
+  ],
+  "added_requirements": [],
+  "mandatory_extensions": [],
+  "assurance_requirements": [
+    "Claim evidence at its actual level; do not substitute finite checks for proof or conformance for legal compliance."
+  ],
+  "runtime_dependencies": [
+    "Runtime consumer must preserve required semantics for any package it claims to consume."
+  ],
+  "compatibility_rules": [
+    "Unknown mandatory authority/evidence/closure extensions are incompatible."
+  ],
+  "invalidation_conditions": [
+    "Material change to source, interpretation, authority, invariant, model, compiler, profile, package, or runtime interface requires impact analysis."
+  ],
+  "limitations": [
+    "Core profile does not establish legal compliance or deployment non-bypassability."
+  ]
+}

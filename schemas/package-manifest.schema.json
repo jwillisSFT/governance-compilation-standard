@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/package-manifest.schema.json",
+  "title": "Compiled Governance Package Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "package_id",
+    "package_version",
+    "spec_version",
+    "model",
+    "source_baseline",
+    "compiler",
+    "target_profile",
+    "scope",
+    "artifacts",
+    "integrity",
+    "limitations"
+  ],
+  "properties": {
+    "package_id": {
+      "type": "string"
+    },
+    "package_version": {
+      "type": "string"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "model": {
+      "type": "object",
+      "required": [
+        "gir_id",
+        "gir_version",
+        "digest"
+      ],
+      "properties": {
+        "gir_id": {
+          "type": "string"
+        },
+        "gir_version": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_baseline": {
+      "type": "object",
+      "required": [
+        "baseline_id",
+        "version"
+      ],
+      "properties": {
+        "baseline_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "compiler": {
+      "type": "object",
+      "required": [
+        "compiler_id",
+        "version",
+        "configuration_id"
+      ],
+      "properties": {
+        "compiler_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "configuration_id": {
+          "type": "string"
+        },
+        "qualification_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "target_profile": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "invariant_profile": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "media_type",
+          "digest"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "digest": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "version"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "digest": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "package_digest_algorithm",
+        "package_digest"
+      ],
+      "properties": {
+        "package_digest_algorithm": {
+          "type": "string"
+        },
+        "package_digest": {
+          "type": "string"
+        },
+        "signature_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

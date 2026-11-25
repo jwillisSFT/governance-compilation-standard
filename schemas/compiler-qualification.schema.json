@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sustainablefuturetech.com/ns/governance-compilation/v0.1.0/compiler-qualification.schema.json",
+  "title": "Compiler Qualification Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qualification_id",
+    "capability",
+    "intended_use",
+    "spec_profiles",
+    "evidence",
+    "status",
+    "decision_authority",
+    "requalification_triggers"
+  ],
+  "properties": {
+    "qualification_id": {
+      "type": "string"
+    },
+    "capability": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "human",
+            "software",
+            "ai-assisted",
+            "organizational",
+            "hybrid"
+          ]
+        },
+        "configuration_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "intended_use": {
+      "type": "object"
+    },
+    "spec_profiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_projections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "qualified",
+        "qualified_with_conditions",
+        "not_qualified",
+        "expired",
+        "suspended"
+      ]
+    },
+    "decision_authority": {
+      "type": "string"
+    },
+    "requalification_triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

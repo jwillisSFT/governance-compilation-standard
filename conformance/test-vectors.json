@@ -1,0 +1,52 @@
+{
+  "spec_version": "0.1.0",
+  "vectors": [
+    {
+      "vector_id": "V-COMMIT-STALE-001",
+      "purpose": "Commit freshness",
+      "proposal_time": {
+        "approval_status": "current",
+        "authority_status": "current",
+        "policy_version": "v1"
+      },
+      "commit_time": {
+        "approval_status": "revoked",
+        "authority_status": "current",
+        "policy_version": "v1"
+      },
+      "expected": "refuse_or_reauthorize",
+      "rationale": "Proposal-time approval cannot authorize commitment after revocation."
+    },
+    {
+      "vector_id": "V-PROJ-AUTH-001",
+      "purpose": "Projection soundness",
+      "canonical_actions": [
+        "TRANSFER_FUNDS"
+      ],
+      "projected_actions": [
+        "TRANSFER_FUNDS",
+        "EXECUTE_COMMAND"
+      ],
+      "expected": "fail",
+      "rationale": "Projection expands authority outside canonical action space."
+    },
+    {
+      "vector_id": "V-EVID-STALE-001",
+      "purpose": "Evidence freshness",
+      "evidence_age_seconds": 7200,
+      "max_freshness_seconds": 3600,
+      "authenticated": true,
+      "expected": "unsatisfied",
+      "rationale": "Authentication does not override freshness requirement."
+    },
+    {
+      "vector_id": "V-CLOSURE-001",
+      "purpose": "Closure non-substitution",
+      "execution_status": "success",
+      "target_verified": false,
+      "required_post_commit_evidence_present": false,
+      "expected": "not_successfully_closed",
+      "rationale": "Execution success is not evidentiary closure."
+    }
+  ]
+}
